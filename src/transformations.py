@@ -89,7 +89,7 @@ def transform_delivery_logs_silver(df_delivery_logs):
             .otherwise(False)
         )
 
-# --- Gold Layer Aggregations ---
+#  Gold Layer Aggregations 
 
 def aggregate_daily_revenue_by_city(df_orders_silver):
     """

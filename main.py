@@ -39,9 +39,8 @@ def _banner(msg: str) -> None:
     print(f"\n{border}\n  {msg}\n{border}")
 
 
-# ---------------------------------------------------------------------------
+
 # Bronze Layer
-# ---------------------------------------------------------------------------
 
 def run_bronze(spark):
     """Ingest raw CSV/JSON files into Bronze Delta tables."""
@@ -72,15 +71,14 @@ def run_bronze(spark):
         print(f"  ✓ {table_name:25s}  →  {df.count():>5,} rows")
 
 
-# ---------------------------------------------------------------------------
+
 # Silver Layer
-# ---------------------------------------------------------------------------
 
 def run_silver(spark):
     """Clean, cast, deduplicate, and enrich Bronze data into Silver."""
     _banner("SILVER LAYER — Transformations")
 
-    # --- Customers ---
+    #  Customers 
     customers_bronze = spark.read.format("delta").load(
         os.path.join(BRONZE_PATH, "raw_customers")
     )
@@ -91,7 +89,7 @@ def run_silver(spark):
     )
     print(f"  ✓ silver_customers          →  {df_customers_silver.count():>5,} rows")
 
-    # --- Order Items ---
+    #  Order Items 
     items_bronze = spark.read.format("delta").load(
         os.path.join(BRONZE_PATH, "raw_order_items")
     )
@@ -102,7 +100,7 @@ def run_silver(spark):
     )
     print(f"  ✓ silver_order_items        →  {df_items_silver.count():>5,} rows")
 
-    # --- Orders (needs item aggregates) ---
+    #  Orders (needs item aggregates) 
     orders_bronze = spark.read.format("delta").load(
         os.path.join(BRONZE_PATH, "raw_orders")
     )
@@ -117,7 +115,7 @@ def run_silver(spark):
     )
     print(f"  ✓ silver_orders             →  {df_orders_silver.count():>5,} rows")
 
-    # --- Delivery Logs ---
+    #  Delivery Logs 
     delivery_bronze = spark.read.format("delta").load(
         os.path.join(BRONZE_PATH, "raw_delivery_logs")
     )
@@ -129,9 +127,8 @@ def run_silver(spark):
     print(f"  ✓ silver_delivery_logs      →  {df_delivery_silver.count():>5,} rows")
 
 
-# ---------------------------------------------------------------------------
+
 # Gold Layer
-# ---------------------------------------------------------------------------
 
 def run_gold(spark):
     """Build business-ready aggregate tables from Silver."""
@@ -155,9 +152,9 @@ def run_gold(spark):
         print(f"  ✓ gold_{table_name:30s} →  {df_agg.count():>5,} rows")
 
 
-# ---------------------------------------------------------------------------
+
 # Main
-# ---------------------------------------------------------------------------
+
 
 def main():
     """Execute the full Bronze → Silver → Gold pipeline."""
