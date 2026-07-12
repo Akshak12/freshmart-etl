@@ -1,0 +1,48 @@
+# Byte-compiled / optimised / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Delta Lake / Spark output (generated at runtime)
+data/bronze/
+data/silver/
+data/gold/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# Spark logs
+*.log
+log/
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter / Databricks
+.ipynb_checkpoints/
