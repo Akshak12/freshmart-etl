@@ -164,7 +164,7 @@ The pipeline will create Delta tables under `data/bronze/`, `data/silver/`, and 
 1. Import the `notebooks/` directory into your Databricks workspace.
 2. Upload raw data to DBFS at `/FileStore/freshmart/raw/`.
 3. Upload the `src/` directory as a Databricks Repo or attach it as a library.
-4. Run `nb_orchestrator` — it chains Bronze → Silver → Gold via `%run`.
+4. Run `nb_orchestrator` : it chains Bronze → Silver → Gold via `%run`.
 5. Optionally schedule the orchestrator as a **Databricks Job** for daily execution.
 
 ---
