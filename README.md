@@ -1,4 +1,4 @@
-# 🛒 FreshMart Retail Analytics — End-to-End ETL Pipeline
+# 🛒 FreshMart Retail Analytics : End-to-End ETL Pipeline
 
 A production-grade batch ETL pipeline for **FreshMart**, a multi-city grocery delivery platform, built with **PySpark**, **Delta Lake**, and **Databricks**, following the **Medallion Architecture** (Bronze → Silver → Gold).
 
@@ -184,4 +184,4 @@ pytest tests/ -v
 
 ## 📝 License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License : see the [LICENSE](LICENSE) file for details.
